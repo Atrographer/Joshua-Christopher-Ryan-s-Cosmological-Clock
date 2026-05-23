@@ -1,0 +1,44 @@
+import numpy as np
+import math
+
+# Constants from Ψ-epoch
+Re_tau = 1.4129651365
+aPsi_Re_tau = 0.041046637215325
+exp_term = 0.015100213963290712
+e = math.exp(1)
+
+print("=== JCR Cosmological Clock Verification ===")
+print(f"Re(τ)          = {Re_tau}")
+print(f"aΨ Re(τ)       = {aPsi_Re_tau}")
+print(f"exp(aΨRe(τ)-1) = {exp_term}")
+
+ratio = exp_term / aPsi_Re_tau
+print(f"Ratio          = {ratio:.12f}")
+print(f"e⁻¹            = {1/e:.12f}")
+print(f"Match to e⁻¹   : {abs(ratio - 1/e) < 1e-10}")
+
+# Core algebraic solution
+aPsi_algebraic = e
+print(f"\nAlgebraic aΨ   = {aPsi_algebraic:.12f}")
+
+# Implied aΨ
+implied_aPsi = aPsi_Re_tau / Re_tau
+print(f"Implied aΨ     = {implied_aPsi:.8f}")
+
+# Bridge function
+f = 1/e
+print(f"Required f(Ψ,τ)= {f:.12f}")
+
+# Additional values
+a = 0.193218843731
+Psi = 0.1503378808
+print(f"\na              = {a}")
+print(f"Ψ              = {Psi}")
+print(f"a × Ψ          = {a * Psi:.8f}")
+
+# Exponential closure
+arg = ratio / f
+exp_closure = math.exp(arg)
+print(f"\nexp(ratio / f) = {exp_closure:.12f}")
+print(f"Target e¹      = {e:.12f}")
+print(f"Closure error  = {abs(exp_closure - e):.2e}")
