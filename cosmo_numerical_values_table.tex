@@ -1,0 +1,247 @@
+Complete list of equations, terms and definitions  
+(from the Cosmological Clock code, thesis, and all handwritten pages)
+
+1. Fundamental constants / locked numerical values
+
+| Symbol | Value | Meaning |
+|--------|-------|---------|
+| \(\varepsilon\) | \(10^{-9}\) | microscopic comoving increment per tick (\(d\chi_{\rm micro}\)) |
+| \(N_{\rm today}\) | \(10^{9}\) | present-day tick count |
+| \(\psi\) | \(0.1503378808\) rad \(\approx 8.6137^\circ\) | angular bridge / modulation kernel / seed coefficient |
+| \(\alpha\) | \(0.193218843731\) | irrational rotation number |
+| \(\theta_{\rm eff}\) | \(1.2140298\) rad \(\approx 69.5588^\circ\) | effective angular advance |
+| \(\operatorname{Re}(\tau)\) / \(\tau\) | \(1.4129651365\) | \(\tau=\arctan(2\pi)\) |
+| \(\delta\phi_{\rm torque}\) / \(\Delta\phi_{\rm torque}\) | \(1.72113420759\) rad \(\approx 98.614^\circ\) | geometric phase slip / effective orthogonal torque angle |
+| \(\{\omega\}\) | \(0.25\) | fractional topological defect |
+| \(\omega\) | \(+3.25\) (integer part \(+3.0\)) | bosonic backbone / global topological invariant |
+| \(\alpha_g\) | \(0.558\) | geometric coupling constant |
+| \(H_{\rm wind}\) | \(70\) km s\(^{-1}\) Mpc\(^{-1}\) | bosonic baseline Hubble |
+| \({\rm sh\_geom\_base}\) / target | \(3.170\) | late-time geometric torque amplitude |
+| \(K_{\rm norm}\) | \(\approx 1.4144172\) | normalisation constant |
+| \(0.7071\) | \(1/\sqrt{2}\) | auxiliary factor in algebraic closure |
+| Screening scale | \(4500\) Mpc | causal \(\chi\)-screening distance |
+| Damping scale | \(5.8\) | redshift-damping constant |
+| Late-time window | \(7\times 10^{8}\le N\le 10^{9}\) | interval where torque is active |
+
+2. Microscopic / macroscopic maps
+
+\[
+\chi_{\rm micro}(N)=\varepsilon\cdot N
+\]
+
+\[
+\chi_{\rm micro}(N_{\rm today})=1
+\]
+
+\[
+a(N)=\exp(\varepsilon\cdot N)=\exp(\chi_{\rm micro})
+\]
+
+\[
+a_{\Psi}=a(N_{\rm today})=e^{1}\approx 2.718281828
+\]
+
+\[
+z(N)=\frac{1}{a(N)}-1
+\]
+
+\[
+z_{\Psi}\approx -0.632
+\]
+
+(Alternative definition appearing in notes)  
+\[
+\chi_{\rm micro}\stackrel{?}{=}\frac{1}{\psi}\approx 6.6518
+\]
+
+3. Phase quantities
+
+Phase bias  
+\[
+\phi_{\rm bias}(N)=2\pi\cdot\varepsilon\cdot N=2\pi\cdot\chi_{\rm micro}
+\]
+
+\[
+\phi_{\rm bias}(N_{\rm today})=2\pi
+\]
+
+Primary / controlled phase (two normalisations used)  
+\[
+v(k)=2\tau\cdot k\cdot 10^{-9}
+\]
+
+\[
+v(k)=4\pi\cdot k\cdot 10^{-9}\qquad\bigl(v(N_{\rm today})=4\pi\bigr)
+\]
+
+\[
+v(0.7071)\approx 8.8875\times 10^{-9}\ {\rm rad}\approx 0.00183''
+\]
+
+\(\psi\)-offset phase  
+\[
+v(k)+\psi
+\]
+
+Projection identities at present epoch (when \(v(N_{\rm today})\) is integer multiple of \(2\pi\))  
+\[
+\cos\bigl(v(N_{\rm today})+\psi\bigr)=\cos\psi,\qquad
+\sin\bigl(v(N_{\rm today})+\psi\bigr)=\sin\psi
+\]
+
+Trigonometric identity for phase difference  
+\[
+\sin v(m)\sin v(n)+\cos v(m)\cos v(n)=\cos\bigl(v(m)-v(n)\bigr)
+\]
+
+4. Discrete dynamical system
+
+Unit circle  
+\[
+S^{1}=\{z\in\mathbb{C}:|z|=1\}
+\]
+
+Irrational rotation  
+\[
+T_{\alpha}:S^{1}\to S^{1},\qquad T_{\alpha}(\phi)=\phi+2\pi\alpha\pmod{2\pi}
+\]
+
+\[
+\alpha=\frac{\theta_{\rm eff}}{2\pi}\approx 0.193218843731
+\]
+
+Complex iterative map  
+\[
+z_{n+1}=z_{n}\exp(i\Delta\phi_{n})
+\]
+
+\[
+z_{N}=z_{0}\exp(i\phi_{N})
+\]
+
+Orbit / ergodic average  
+\[
+\lim_{N\to\infty}\frac{1}{N}\sum_{n=0}^{N-1}f(T_{\alpha}^{n}x)=\int_{0}^{1}f(x)\,dx
+\]
+
+5. Geometric torque and Hubble parameter
+
+Phase slip construction  
+\[
+\Delta\phi_{\rm torque}=\{\omega\}\cdot 2\pi+\psi=0.25\cdot 2\pi+\psi\approx 1.72113420759
+\]
+
+Critical identity  
+\[
+\sin(\Delta\phi_{\rm torque})=\cos\psi\approx 0.9887205
+\]
+
+Effective frequency  
+\[
+\omega_{\rm eff}=\frac{\Delta\phi_{\rm torque}}{\Delta y_{n}}\approx\frac{1.72113420759}{0.3}\approx 5.7371140253
+\]
+
+Geometric contribution  
+\[
+\delta H_{\rm geom}=\alpha_{g}\cdot\omega_{\rm eff}\cdot\sin(\Delta\phi_{\rm torque})
+\]
+
+(with overall normalisation so that \(\delta H_{\rm geom}(N_{\rm today})\approx 3.170\))
+
+Total Hubble  
+\[
+H(N)=H_{\rm wind}+\delta H_{\rm geom}(N)
+\]
+
+\[
+H(N_{\rm today})\approx 73.17\ {\rm km\,s^{-1}\,Mpc^{-1}}
+\]
+
+Integral form of torque (notes)  
+\[
+\Delta H_{\rm torque}(z=0)\propto\int_{0}^{N_{\rm today}}
+\bigl[\text{phase-bias from tick }n\bigr]
+\cdot\exp\bigl(-\chi(n)/4500\bigr)
+\cdot f_{\rm mod}(z(n))
+\cdot\exp(-z(n)/5.8)\,dn
+\]
+
+6. Suppression / damping / modulation functions
+
+\[
+S(\chi)=\exp\bigl(-\chi/4500\,{\rm Mpc}\bigr)
+\qquad\text{(causal \(\chi\)-screening)}
+\]
+
+\[
+f_{\rm damp}(z)=\exp(-z/5.8)
+\qquad\text{(redshift damping)}
+\]
+
+\[
+f_{\rm mod}(z)=1+5\exp(-z/2)
+\qquad\text{(modulation)}
+\]
+
+\[
+S(z)=\bigl(1+5e^{-z/2}\bigr)\exp(-z/5.8)\exp\bigl(-\chi(z)/4500\bigr)
+\]
+
+7. Algebraic bridge / closure identities
+
+\[
+\alpha\cdot\psi\approx 0.193218843731\times 0.1503378808=0.02905
+\]
+
+\[
+f(\psi,\tau)\approx\frac{\cos\psi\cdot\operatorname{Re}(\tau)}{\sin(\operatorname{Re}(\tau))\cdot K_{\rm norm}}\approx 1.0000
+\]
+
+\[
+1.4144172\times 0.7071=1
+\]
+
+\[
+K_{\rm norm}=\frac{\cos\psi\cdot\operatorname{Re}(\tau)}{\sin(\operatorname{Re}(\tau))}\approx 1.4144172
+\]
+
+Handwritten recovery of \(e\):  
+\[
+\begin{align*}
+34.4234079\times 0.01068679&\approx 0.36787573\\
+\frac{0.015100213963290712}{0.041046637215325}&\approx 0.367879\\
+\exp(\ldots)&\approx 2.718281828=e
+\end{align*}
+\]
+
+8. Cosmic-time and differential mappings
+
+\[
+dt=\Delta t_{\rm micro}(n)\,dn,\qquad
+t(N)=\int_{0}^{N}\Delta t_{\rm micro}(n)\,dn
+\]
+
+\[
+\ln a(N)=C\cdot N\varepsilon
+\]
+
+\[
+H=\frac{\varepsilon\cdot C}{\Delta t_{\rm micro}}
+\]
+
+\[
+H(N)=\frac{1}{a}\frac{da}{dt}=\frac{d\ln a/dN}{dt/dN}=\frac{\varepsilon\cdot C}{\Delta t_{\rm micro}(N)}
+\]
+
+9. Additional ratios / secondary terms
+
+\[
+S_{b}=\frac{3.0}{70}\approx 0.042857
+\qquad\text{(bosonic degrees-of-freedom winding contribution)}
+\]
+
+\[
+\Delta H_{\rm torque}=k\cdot\omega_{\rm eff}\cdot\sin(\Delta\phi_{\rm torque})
+\]
+
+All symbols and equations above appear explicitly in the repository code, the \(\Psi\)-bridge thesis, or the handwritten sheets you supplied.
